@@ -1,4 +1,5 @@
 
+
 import java.awt.Desktop;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -179,6 +180,31 @@ else if(containsIgnoreCase(str,"date") || containsIgnoreCase(str,"time")){
       new SimpleDateFormat ("E yyyy.MM.dd 'Time: ' hh:mm:ss a zzz");
 
       botReply("Current Date: " + ft.format(dNow));
+}
+else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, "website")){
+    String[] sp = str.split(" ");
+    botReply(""+sp[1]+" will be opened in the browser!");
+    Desktop d = Desktop.getDesktop();
+    try {
+        d.browse(new URI("http://"+sp[1]+".com"));
+    } catch (URISyntaxException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, ".com")){
+    String[] sp = str.split(" ");
+    String s = sp[1].substring(0, sp[1].length() - 4);
+    botReply(""+s+" will be opened in the browser!");
+    Desktop d = Desktop.getDesktop();
+    try {
+        d.browse(new URI("http://"+s+".com"));
+    } catch (URISyntaxException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
 }
 else{
 botReply("Sorry, I don't understand.");}// TODO add your handling code here:
