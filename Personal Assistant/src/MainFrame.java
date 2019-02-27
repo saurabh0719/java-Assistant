@@ -142,7 +142,7 @@ if(containsIgnoreCase(str,"Hi")) {
     botReply("Hello! How can I help you?");
 }
 
-else if(containsIgnoreCase(str,"hello") || containsIgnoreCase(str,"hey")){
+else if(containsIgnoreCase(str,"hello") || containsIgnoreCase(str,"hey") || containsIgnoreCase(str,"wass")){
     botReply("hello wasup");
 }
 
@@ -151,6 +151,40 @@ else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"browser") || 
     try {
         botReply("Chrome browser will open on an external window!");
         Process p = Runtime.getRuntime().exec("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"); 
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    }
+
+//Opens notepad++
+else if(containsIgnoreCase(str,"notepad++")){
+    try {
+        botReply("I shall open notepad++");
+        Process p = Runtime.getRuntime().exec("C:/Program Files (x86)/Notepad++/notepad++.exe"); 
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    }
+
+//Opens notepad
+else if(containsIgnoreCase(str,"notepad")){
+    try {
+        botReply("I shall open notepad");
+        Process p = Runtime.getRuntime().exec("notepad"); 
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    }
+
+
+//Opens calculator
+else if(containsIgnoreCase(str,"calculator")){
+    try {
+        botReply("I shall open the calculator");
+        Process p = Runtime.getRuntime().exec("calc"); 
     } catch (IOException ex) {
         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -219,7 +253,7 @@ else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, "website")){
     }
 }
 
-//performs google search. "search xyz abc on google"
+//performs google search. "search xyz abc on google" SAFE SEARCH
 else if(containsIgnoreCase(str,"Search") && containsIgnoreCase(str, "on google")){
 botReply("Okay");
 String first_str = "http://www.google.com/search?h1=en&q=";
@@ -247,8 +281,35 @@ Desktop d = Desktop.getDesktop();
 
 }
 
+//performs youtube search.
+else if(containsIgnoreCase(str,"play") && containsIgnoreCase(str, "on youtube")){
+botReply("Okay");
+String first_str = "https://www.youtube.com/results?search_query=";
+String[] sp = str.split(" ");
+int count = sp.length;
+count -=3;
+String temp = "";
+int i;
+for(i=1; i<=count; i++){
+    temp = temp+sp[i];
+    if(i!=count){
+        temp = temp + "+";
+    }
+}
+String main_str = first_str + temp;
+Desktop d = Desktop.getDesktop();
+    try {
+        d.browse(new URI(""+main_str));
+    } catch (URISyntaxException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
 
-else if(containsIgnoreCase(str,"why") || containsIgnoreCase(str,"where") || containsIgnoreCase(str,"what") || containsIgnoreCase(str,"when") || containsIgnoreCase(str,"how")){
+}
+
+//standard google search for question tags
+else if(containsIgnoreCase(str,"why") || containsIgnoreCase(str,"where") || containsIgnoreCase(str,"what") || containsIgnoreCase(str,"when") || containsIgnoreCase(str,"how") || containsIgnoreCase(str,"?") || containsIgnoreCase(str,"score")){
 botReply("I shall open up a google search for your query.");
 String first_str = "http://www.google.com/search?h1=en&q=";
 String last_str = "&btnG=Google+Search";
@@ -300,7 +361,31 @@ else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, ".com")){
 
 //defult reply
 else{
-botReply("Sorry, I don't understand.");}// TODO add your handling code here:
+botReply("Sorry, I don't understand.");
+botReply("I shall open up a google search for your query.");
+String first_str = "http://www.google.com/search?h1=en&q=";
+String last_str = "&btnG=Google+Search";
+String[] sp = str.split(" ");
+int count = sp.length;
+String temp = "";
+int i;
+for(i=0; i<count; i++){
+    temp = temp+sp[i];
+    if(i!=(count-1)){
+        temp = temp + "+";
+    }
+}
+String main_str = first_str + temp + last_str;
+Desktop d = Desktop.getDesktop();
+    try {
+        d.browse(new URI(""+main_str));
+    } catch (URISyntaxException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
