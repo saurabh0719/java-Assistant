@@ -1,8 +1,6 @@
 
 
 import java.awt.Desktop;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -143,15 +141,19 @@ userText.setText("");
 if(containsIgnoreCase(str,"Hi")) { 
     botReply("Hello! How can I help you?");
 }
+
+//Opens chrome browser
 else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"browser") || containsIgnoreCase(str,"google") || containsIgnoreCase(str,"chrome"))){
     try {
         botReply("Chrome browser will open on an external window!");
-        Process p = Runtime.getRuntime().exec("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe");
+        Process p = Runtime.getRuntime().exec("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"); 
     } catch (IOException ex) {
         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
     
     }
+
+//opens gmail
 else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"mail")){
     botReply("Gmail will open in the browser!");
         Desktop d = Desktop.getDesktop();
@@ -163,6 +165,8 @@ else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"mail")){
         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
+
+//opens facebook
 else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"facebook")){
     botReply("Facebook will open in the browser!");
         Desktop d = Desktop.getDesktop();
@@ -174,6 +178,21 @@ else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"facebook")){
         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
+
+//opens youtube
+else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"youtube")){
+    botReply("Facebook will open in the browser!");
+        Desktop d = Desktop.getDesktop();
+    try {
+        d.browse(new URI("http://youtube.com"));
+    } catch (URISyntaxException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+
+//shows date and time
 else if(containsIgnoreCase(str,"date") || containsIgnoreCase(str,"time")){
       Date dNow = new Date( );
       SimpleDateFormat ft = 
@@ -181,6 +200,8 @@ else if(containsIgnoreCase(str,"date") || containsIgnoreCase(str,"time")){
 
       botReply("Current Date: " + ft.format(dNow));
 }
+
+//opens a specific website. "open xyz website"
 else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, "website")){
     String[] sp = str.split(" ");
     botReply(""+sp[1]+" will be opened in the browser!");
@@ -193,6 +214,36 @@ else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, "website")){
         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
+
+//performs google search. "search xyz abc on google"
+else if(containsIgnoreCase(str,"Search") && containsIgnoreCase(str, "on google")){
+botReply("Okay");
+String first_str = "http://www.google.com/search?h1=en&q=";
+String last_str = "&btnG=Google+Search";
+String[] sp = str.split(" ");
+int count = sp.length;
+count -=3;
+String temp = "";
+int i;
+for(i=1; i<=count; i++){
+    temp = temp+sp[i];
+    if(i!=count){
+        temp = temp + "+";
+    }
+}
+String main_str = first_str + temp + last_str;
+Desktop d = Desktop.getDesktop();
+    try {
+        d.browse(new URI(""+main_str));
+    } catch (URISyntaxException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+}
+
+//opens a specific website. "open github.com"
 else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, ".com")){
     String[] sp = str.split(" ");
     String s = sp[1].substring(0, sp[1].length() - 4);
@@ -206,6 +257,8 @@ else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, ".com")){
         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
+
+//defult reply
 else{
 botReply("Sorry, I don't understand.");}// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
