@@ -142,6 +142,10 @@ if(containsIgnoreCase(str,"Hi")) {
     botReply("Hello! How can I help you?");
 }
 
+else if(containsIgnoreCase(str,"hello") || containsIgnoreCase(str,"hey")){
+    botReply("hello wasup");
+}
+
 //Opens chrome browser
 else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"browser") || containsIgnoreCase(str,"google") || containsIgnoreCase(str,"chrome"))){
     try {
@@ -193,7 +197,7 @@ else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"youtube")){
 }
 
 //shows date and time
-else if(containsIgnoreCase(str,"date") || containsIgnoreCase(str,"time")){
+else if(containsIgnoreCase(str,"what is the date?") || containsIgnoreCase(str,"what is the time?") || containsIgnoreCase(str,"tell me the time") || containsIgnoreCase(str,"tell me the date")){
       Date dNow = new Date( );
       SimpleDateFormat ft = 
       new SimpleDateFormat ("E yyyy.MM.dd 'Time: ' hh:mm:ss a zzz");
@@ -242,6 +246,42 @@ Desktop d = Desktop.getDesktop();
     }
 
 }
+
+
+else if(containsIgnoreCase(str,"why") || containsIgnoreCase(str,"where") || containsIgnoreCase(str,"what") || containsIgnoreCase(str,"when") || containsIgnoreCase(str,"how")){
+botReply("I shall open up a google search for your query.");
+String first_str = "http://www.google.com/search?h1=en&q=";
+String last_str = "&btnG=Google+Search";
+String[] sp = str.split(" ");
+int count = sp.length;
+String temp = "";
+int i;
+for(i=0; i<count; i++){
+    temp = temp+sp[i];
+    if(i!=(count-1)){
+        temp = temp + "+";
+    }
+}
+String main_str = first_str + temp + last_str;
+Desktop d = Desktop.getDesktop();
+    try {
+        d.browse(new URI(""+main_str));
+    } catch (URISyntaxException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+
+//shows date and time
+else if(containsIgnoreCase(str,"date") || containsIgnoreCase(str,"time")){
+      Date dNow = new Date( );
+      SimpleDateFormat ft = 
+      new SimpleDateFormat ("E yyyy.MM.dd 'Time: ' hh:mm:ss a zzz");
+
+      botReply("Current Date: " + ft.format(dNow));
+}
+
 
 //opens a specific website. "open github.com"
 else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, ".com")){
