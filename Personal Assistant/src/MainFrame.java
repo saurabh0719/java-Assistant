@@ -48,10 +48,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel1.setText("     Personal Assistant");
 
+        chatArea.setBackground(new java.awt.Color(255, 255, 204));
         chatArea.setColumns(20);
         chatArea.setRows(5);
         jScrollPane1.setViewportView(chatArea);
 
+        userText.setBackground(new java.awt.Color(255, 255, 204));
+
+        jButton1.setBackground(new java.awt.Color(0, 153, 204));
         jButton1.setText("Send");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +63,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 153, 0));
         jButton2.setText("Clear Chat");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +224,7 @@ else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"facebook")){
 
 //opens youtube
 else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"youtube")){
-    botReply("Facebook will open in the browser!");
+    botReply("Youtube will open in the browser!");
         Desktop d = Desktop.getDesktop();
     try {
         d.browse(new URI("http://youtube.com"));
@@ -362,21 +367,22 @@ else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, ".com")){
 //defult reply
 else{
 botReply("Sorry, I don't understand.");
-botReply("I shall open up a google search for your query.");
-String first_str = "http://www.google.com/search?h1=en&q=";
-String last_str = "&btnG=Google+Search";
-String[] sp = str.split(" ");
-int count = sp.length;
-String temp = "";
-int i;
-for(i=0; i<count; i++){
-    temp = temp+sp[i];
-    if(i!=(count-1)){
-        temp = temp + "+";
+if( !"".equals(str)){
+    botReply("I shall open up a google search for your query.");
+    String first_str = "http://www.google.com/search?h1=en&q=";
+    String last_str = "&btnG=Google+Search";
+    String[] sp = str.split(" ");
+    int count = sp.length;
+    String temp = "";
+    int i;
+    for(i=0; i<count; i++){
+        temp = temp+sp[i];
+        if(i!=(count-1)){
+            temp = temp + "+";
+        }
     }
-}
-String main_str = first_str + temp + last_str;
-Desktop d = Desktop.getDesktop();
+    String main_str = first_str + temp + last_str;
+    Desktop d = Desktop.getDesktop();
     try {
         d.browse(new URI(""+main_str));
     } catch (URISyntaxException ex) {
@@ -384,6 +390,7 @@ Desktop d = Desktop.getDesktop();
     } catch (IOException ex) {
         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
     }
     
     }//GEN-LAST:event_jButton1ActionPerformed
