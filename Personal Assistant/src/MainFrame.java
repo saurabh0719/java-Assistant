@@ -143,11 +143,11 @@ public class MainFrame extends javax.swing.JFrame {
 String str = userText.getText().toLowerCase();
 chatArea.append("USER: "+str+"\n");
 userText.setText("");
-if(containsIgnoreCase(str,"Hi")) { 
+if(containsIgnoreCase(str,"Hi") || containsIgnoreCase(str,"hello") || containsIgnoreCase(str,"hey")) { 
     botReply("Hello! How can I help you?");
 }
 
-else if(containsIgnoreCase(str,"hello") || containsIgnoreCase(str,"hey") || containsIgnoreCase(str,"wass")){
+else if(containsIgnoreCase(str,"wass")){
     botReply("hello wasup");
 }
 
