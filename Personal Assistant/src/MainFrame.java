@@ -234,6 +234,15 @@ else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"youtube")){
     }
 }
 
+else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"netbeans")){
+    try {
+        botReply("I shall open Netbeans IDE!");
+        Process p = Runtime.getRuntime().exec("C:/Program Files/NetBeans 8.2/bin/netbeans64.exe"); 
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+
 //shows date and time
 else if(containsIgnoreCase(str,"what is the date?") || containsIgnoreCase(str,"what is the time?") || containsIgnoreCase(str,"tell me the time") || containsIgnoreCase(str,"tell me the date")){
       Date dNow = new Date( );
