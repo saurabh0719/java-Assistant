@@ -183,6 +183,16 @@ else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"notepad"))){
     
     }
 
+else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"run"))){
+    try {
+        botReply("I shall open notepad");
+        Process p = Runtime.getRuntime().exec("C:/Users/Lenovo/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/System Tools/run.exe"); 
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    }
+
 else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"command prompt") || containsIgnoreCase(str," cmd"))){
     try {
         botReply("I shall open the command prompt");
