@@ -162,7 +162,7 @@ else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"browser") || 
     }
 
 //Opens notepad++
-else if(containsIgnoreCase(str,"notepad++")){
+else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"notepad++"))){
     try {
         botReply("I shall open notepad++");
         Process p = Runtime.getRuntime().exec("C:/Program Files (x86)/Notepad++/notepad++.exe"); 
@@ -173,7 +173,7 @@ else if(containsIgnoreCase(str,"notepad++")){
     }
 
 //Opens notepad
-else if(containsIgnoreCase(str,"notepad")){
+else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"notepad"))){
     try {
         botReply("I shall open notepad");
         Process p = Runtime.getRuntime().exec("notepad"); 
@@ -183,9 +183,19 @@ else if(containsIgnoreCase(str,"notepad")){
     
     }
 
+else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"command prompt") || containsIgnoreCase(str," cmd"))){
+    try {
+        botReply("I shall open the command prompt");
+        Process p = Runtime.getRuntime().exec("cmd /c start cmd.exe"); 
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    }
+
 
 //Opens calculator
-else if(containsIgnoreCase(str,"calculator")){
+else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"calculator"))){
     try {
         botReply("I shall open the calculator");
         Process p = Runtime.getRuntime().exec("calc"); 
@@ -238,6 +248,15 @@ else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"netbeans")){
     try {
         botReply("I shall open Netbeans IDE!");
         Process p = Runtime.getRuntime().exec("C:/Program Files/NetBeans 8.2/bin/netbeans64.exe"); 
+    } catch (IOException ex) {
+        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+
+else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"ubuntu") || containsIgnoreCase(str,"Virtual box") || containsIgnoreCase(str,"linux"))){
+    try {
+        botReply("I shall open the Virtual Machine on this PC!");
+        Process p = Runtime.getRuntime().exec("C:/Program Files/Oracle/VirtualBox/VirtualBox.exe"); 
     } catch (IOException ex) {
         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
