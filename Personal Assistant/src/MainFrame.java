@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Lenovo
+ * @author saurabh0719
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -182,8 +182,9 @@ else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"notepad"))){
     }
     
     }
+        /*testing to open and run files and apps */
 
-else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"run"))){
+/* else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"run"))){
     try {
         botReply("I shall open notepad");
         Process p = Runtime.getRuntime().exec("C:/Users/Lenovo/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/System Tools/run.exe"); 
@@ -191,8 +192,9 @@ else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"run"))){
         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
     }
     
-    }
-
+    } */ 
+        
+//Opens Command prompt
 else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"command prompt") || containsIgnoreCase(str," cmd"))){
     try {
         botReply("I shall open the command prompt");
@@ -254,6 +256,7 @@ else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"youtube")){
     }
 }
 
+        //Opens netbeans IDE
 else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"netbeans")){
     try {
         botReply("I shall open Netbeans IDE!");
@@ -263,6 +266,7 @@ else if(containsIgnoreCase(str,"Open") && containsIgnoreCase(str,"netbeans")){
     }
 }
 
+        //Runs the virtual machine
 else if(containsIgnoreCase(str,"Open") && (containsIgnoreCase(str,"ubuntu") || containsIgnoreCase(str,"Virtual box") || containsIgnoreCase(str,"linux"))){
     try {
         botReply("I shall open the Virtual Machine on this PC!");
@@ -402,6 +406,7 @@ else if(containsIgnoreCase(str,"open") && containsIgnoreCase(str, ".com")){
 }
 
 //defult reply
+        //performs google search for unknown query
 else{
 botReply("Sorry, I don't understand.");
 if( !"".equals(str)){
