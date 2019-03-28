@@ -27,6 +27,8 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(102, 153, 255));
+        botReply("Hello! I'm a task oriented desktop Assistant.");
+        botReply("How can I help you today?");
     }
 
     /**
